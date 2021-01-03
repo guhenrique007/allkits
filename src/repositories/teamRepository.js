@@ -1,7 +1,7 @@
 const Team = require('../entities/Team');
 
 exports.create = async (data) => {
-  const { name, country,  } = data; 
+  const { name, country, companyName, association } = data; 
 
   const team = await Team.create({
     name,
