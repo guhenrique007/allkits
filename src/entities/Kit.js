@@ -20,6 +20,7 @@ const KitSchema = new mongoose.Schema({
     ref: "Team",
     require: true,
   },
+  team: String,
   createdAt: {
     type: Date,
     default: Date.now,
