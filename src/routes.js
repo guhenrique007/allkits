@@ -9,7 +9,8 @@ const KitController = require('./controllers/KitController');
 
 
 routes.get('/kits', KitController.show);
-routes.get('/kits/:team', KitController.showByTeam)
+routes.get('/kits/:team', KitController.showByTeam);
+routes.get('/teams/:team', TeamController.showByName);
 
 routes.post('/teams', TeamController.store);
 routes.post('/kits', multer(multerConfig).single("file"), KitController.store);
