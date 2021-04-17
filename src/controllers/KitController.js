@@ -26,7 +26,8 @@ class KitController {
   }
 
   async show(req, res) {
-    const kits = await kitRepo.get();
+    const { limit = 10 } = req.query;
+    const kits = await kitRepo.get(parseInt(limit));
     return res.json(kits)
   }
 

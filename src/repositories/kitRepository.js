@@ -22,8 +22,8 @@ exports.create = async (data, file) => {
   return kit;
 };
 
-exports.get = async() => {
-  return await Kit.find();
+exports.get = async(limit) => {
+  return await Kit.find().limit(limit);
 }
 
 exports.getById = async(id) => {
