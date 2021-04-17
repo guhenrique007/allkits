@@ -9,6 +9,7 @@ const KitController = require('./controllers/KitController');
 
 
 routes.get('/kits', KitController.show);
+routes.get('/kits/filter', KitController.showByFilters);
 routes.get('/kits/:team', KitController.showByTeam);
 routes.get('/teams/:team', TeamController.showByName);
 

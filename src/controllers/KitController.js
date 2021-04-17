@@ -4,7 +4,7 @@ const CountryList = require('../entities/Country');
 
 class KitController {
   async store(req, res) {
-    const { sportwear, model, platform, season, teamId, team } = req.body; 
+    const { sportwear, model, platform, season, teamId, team, credits, storage } = req.body; 
 
     console.log(req.body,'\n', req.file);
 
@@ -28,7 +28,7 @@ class KitController {
   async show(req, res) {
     const { limit = 10 } = req.query;
     const kits = await kitRepo.get(parseInt(limit));
-    return res.json(kits)
+    return res.json(kits);
   }
 
   async showByTeam(req, res) {
@@ -43,6 +43,14 @@ class KitController {
 
     const kits = await kitRepo.getByTeam(teamObj._id);
     console.log(kits)
+    return res.json(kits)
+  }
+
+  async showByFilters(req, res) {
+    const { country = '', platform = '', sportwear = '', season = '', team = ''  } = req.query;
+    const filters = { country, platform, sportwear, season, team };
+
+    const kits = await kitRepo.getByFilter(filters);
     return res.json(kits)
   }
 

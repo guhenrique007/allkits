@@ -233,6 +233,8 @@ const countryList = {
   UA: "Ukraine",
   AE: "United Arab Emirates (the)",
   GB: "United Kingdom of Great Britain and Northern Ireland (the)",
+  EN: "England",
+  NIR: "Northern Ireland",
   UM: "United States Minor Outlying Islands (the)",
   US: "United States of America (the)",
   UY: "Uruguay",
