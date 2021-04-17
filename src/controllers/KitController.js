@@ -1,19 +1,23 @@
 const kitRepo = require("../repositories/kitRepository");
 const Team = require('../entities/Team');
+const CountryList = require('../entities/Country');
 
 class KitController {
   async store(req, res) {
-    const { team } = req.body;
+    const { sportwear, model, platform, season, teamId, team } = req.body; 
+
+    console.log(req.body,'\n', req.file);
 
     const teamObj = await Team.findOne({ name: team }).exec();
     if(!teamObj){
       return res.status(404).json({ error: "Time não existe" });
     }
 
-    req.body.teamId = teamObj._id;
+    const data = { sportwear, model, platform, season, credits, storage, teamId, team, teamId: teamObj._id };
+    const file = req.file ? req.file : req.body.file;
 
     try {
-      const kit = await kitRepo.create(req.body, req.file);
+      const kit = await kitRepo.create(data, file);
       return res.status(201).json({ kit });
     } catch (error) {
       console.log(error);

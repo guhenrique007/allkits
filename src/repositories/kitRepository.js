@@ -1,8 +1,8 @@
 const Kit = require('../entities/Kit');
 
 exports.create = async (data, file) => {
-  const { originalname: name, size, key, location: url = ''} = file;
-  const { sportwear, model, platform, season, teamId, team } = data; 
+  const { originalname: name, size = 0, key = '', location: url = ''} = file;
+  const { sportwear, model, platform, season, teamId, team, credits, storage } = data; 
 
   const kit = await Kit.create({
     name,
@@ -14,7 +14,9 @@ exports.create = async (data, file) => {
     team,
     model,
     platform,
-    season
+    season,
+    credits,
+    storage
   })
 
   return kit;

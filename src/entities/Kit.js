@@ -15,6 +15,8 @@ const KitSchema = new mongoose.Schema({
   size: Number,
   key: String,
   url: String,
+  credits: String,
+  storage: String,
   teamId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Team",
@@ -34,7 +36,7 @@ KitSchema.pre("remove", function () {
 });
 
 KitSchema.pre("remove", function () {
-  if (process.env.STORAGE_TYPE === "s3") {
+  if (process.env.STORAGE_TYPE === 's3' && this.storage === 's3') {
     return s3
       .deleteObject({
         Bucket: process.env.BUCKET,
